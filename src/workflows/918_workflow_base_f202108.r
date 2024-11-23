@@ -279,9 +279,13 @@ TS_strategy_base8 <- function( pinputexps )
 
   param_local$final_train$undersampling <- 1.0
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
-  param_local$final_train$training <- c(202106, 202105, 202104,
+  #param_local$final_train$training <- c(202106, 202105, 202104,
     202103, 202102, 202101)
-
+  #23/11/24 SE AGREGAN 24 MESES
+  param_local$final_train$training <- c(202106, 202105, 202104,
+    202103, 202102, 202101, 202012, 202011, 202010, 202009, 202008,
+    202007, 202006, 202005, 202004, 202003, 202002, 202001, 201912,
+    201911, 201910, 201909, 201908, 201907)
 
   param_local$train$training <- c(202104, 202103, 202102,
     202101, 202012, 202011)
@@ -290,7 +294,9 @@ TS_strategy_base8 <- function( pinputexps )
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
   # 1.0 significa NO undersampling
-  param_local$train$undersampling <- 0.2
+  #param_local$train$undersampling <- 0.2
+  #23/11/24 NO APLICO UNDERSAMPLING
+  param_local$train$undersampling <- 1.0
   param_local$train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
 
   return( exp_correr_script( param_local ) ) # linea fija
@@ -433,9 +439,9 @@ wf_agosto <- function( pnombrewf )
   param_local <- exp_wf_init( pnombrewf ) # linea workflow inicial fija
 
   # Etapa especificacion dataset de la Segunda Competencia Kaggle
-  #DT_incorporar_dataset( "~/buckets/b1/datasets/competencia_02.csv.gz")
+  DT_incorporar_dataset( "~/buckets/b1/datasets/competencia_02.csv.gz")
   #cambio 21/11/24
-  DT_incorporar_dataset( "~/buckets/b1/datasets/competencia02FS.csv.gz")
+  #DT_incorporar_dataset( "~/buckets/b1/datasets/competencia02FS.csv.gz")
   # Etapas preprocesamiento
   CA_catastrophe_base( metodo="MachineLearning")
   FEintra_manual_base()
@@ -452,7 +458,9 @@ wf_agosto <- function( pnombrewf )
 
   # Etapas modelado
   ts8 <- TS_strategy_base8()
-  ht <- HT_tuning_base( bo_iteraciones = 40 )  # iteraciones inteligentes
+  #ht <- HT_tuning_base( bo_iteraciones = 40 )  # iteraciones inteligentes
+  #23/11/24 CAMBIO LA CANTIDAD DE ITERACIONES POR 60
+  ht <- HT_tuning_base( bo_iteraciones = 60 )  # iteraciones inteligentes
 
   # Etapas finales
   fm <- FM_final_models_lightgbm( c(ht, ts8), ranks=c(1), qsemillas=5 )
