@@ -277,7 +277,7 @@ TS_strategy_base8 <- function( pinputexps )
 
   param_local$future <- c(202108)
 
-  param_local$final_train$undersampling <- 1.0
+  param_local$final_train$undersampling <- 0.2
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   #param_local$final_train$training <- c(202106, 202105, 202104,
     #202103, 202102, 202101)
@@ -295,8 +295,9 @@ TS_strategy_base8 <- function( pinputexps )
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
   # 1.0 significa NO undersampling
   #param_local$train$undersampling <- 0.2
-  #23/11/24 NO APLICO UNDERSAMPLING
-  param_local$train$undersampling <- 1.0
+  #23/11/24 NO APLICO UNDERSAMPLING, lo cambio a 1
+  #27/11 cambio para usasr undersampling
+  param_local$train$undersampling <- 0.2
   param_local$train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
 
   return( exp_correr_script( param_local ) ) # linea fija
@@ -423,7 +424,8 @@ KA_evaluate_kaggle <- function( pinputexps )
   param_local$envios_desde <-   9000L
   param_local$envios_hasta <-  13000L
   param_local$envios_salto <-   500L
-  param_local$competition <- "dm-ey-f-2024-segunda"
+  #27/11/2024 cambio por tercera competencia
+  param_local$competition <- "dm-ey-f-2024-tercera"
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
@@ -439,7 +441,9 @@ wf_agosto <- function( pnombrewf )
   param_local <- exp_wf_init( pnombrewf ) # linea workflow inicial fija
 
   # Etapa especificacion dataset de la Segunda Competencia Kaggle
-  DT_incorporar_dataset( "~/buckets/b1/datasets/competencia_02.csv.gz")
+  #27/11/24 cambio por competencia 03
+  DT_incorporar_dataset( "~/buckets/b1/datasets/competencia_03.csv.gz")
+  #DT_incorporar_dataset( "~/buckets/b1/datasets/competencia_02.csv.gz")
   #cambio 21/11/24
   #DT_incorporar_dataset( "~/buckets/b1/datasets/competencia02FS.csv.gz")
   # Etapas preprocesamiento
