@@ -19,7 +19,7 @@ envg$EXPENV$repo_dir <- "~/dmeyf2024/"
 envg$EXPENV$datasets_dir <- "~/buckets/b1/datasets/"
 envg$EXPENV$messenger <- "~/install/zulip_enviar.sh"
 
-envg$EXPENV$semilla_primigenia <- 102191
+envg$EXPENV$semilla_primigenia <- 191173
 
 # leo el unico parametro del script
 args <- commandArgs(trailingOnly=TRUE)
@@ -257,49 +257,49 @@ CN_canaritos_asesinos_base <- function( pinputexps, ratio, desvio)
 # Training Strategy  Baseline
 #  azaroso, utiliza semilla
 
-TS_strategy_base8 <- function( pinputexps )
-{
-  if( -1 == (param_local <- exp_init())$resultado ) return( 0 )# linea fija
+#TS_strategy_base9 <- function( pinputexps )
+#{
+ # if( -1 == (param_local <- exp_init())$resultado ) return( 0 )# linea fija
 
-  param_local$meta$script <- "/src/wf-etapas/z2101_TS_training_strategy.r"
+  #param_local$meta$script <- "/src/wf-etapas/z2101_TS_training_strategy.r"
 
-  param_local$future <- c(202108)
+  #param_local$future <- c(202109)
 
-  param_local$final_train$undersampling <- 1.0
-  param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
-  param_local$final_train$training <- c(202106, 202105, 202104,
-    202103, 202102, 202101)
+  #param_local$final_train$undersampling <- 1.0
+  #param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
+  #param_local$final_train$training <- c(202107,202106, 202105, 202104,
+   # 202103, 202102, 202101)
 
 
-  param_local$train$training <- c(202104, 202103, 202102,
-    202101, 202012, 202011)
-  param_local$train$validation <- c(202105)
-  param_local$train$testing <- c(202106)
+  #param_local$train$training <- c(202105, 202104, 202103, 202102,
+   # 202101, 202012, 202011)
+  #param_local$train$validation <- c(202106)
+  #param_local$train$testing <- c(202107)
 
 
   # Atencion  0.2  de  undersampling de la clase mayoritaria,  los CONTINUA
   # 1.0 significa NO undersampling
-  param_local$train$undersampling <- 0.2
-  param_local$train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
+  #param_local$train$undersampling <- 0.2
+  #param_local$train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
 
-  return( exp_correr_script( param_local ) ) # linea fija
-}
+  #return( exp_correr_script( param_local ) ) # linea fija
+#}
 #------------------------------------------------------------------------------
 # Atencion, el undersampling es de 0.02
 #  tanto para entrenamineto como para  Final train$clase01_valor1
 
-TS_strategy_base8 <- function( pinputexps )
+TS_strategy_base9 <- function( pinputexps )
 {
   if( -1 == (param_local <- exp_init())$resultado ) return( 0 )# linea fija
 
   param_local$meta$script <- "/src/wf-etapas/z2101_TS_training_strategy.r"
 
-  param_local$future <- c(202108)
+  param_local$future <- c(202109)
 
   param_local$final_train$undersampling <- 0.02
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   param_local$final_train$training <- c(
-    202106, 202105, 202104, 202103, 202102, 202101, 
+    202107, 202106, 202105, 202104, 202103, 202102, 202101, 
     202012, 202011, 202010, 202009, 202008, 202007, 
     # 202006  Excluyo por variables rotas
     202005, 202004, 202003, 202002, 202001,
@@ -311,11 +311,11 @@ TS_strategy_base8 <- function( pinputexps )
   )
 
 
-  param_local$train$testing <- c(202106)
-  param_local$train$validation <- c(202105)
+  param_local$train$testing <- c(202107)
+  param_local$train$validation <- c(202106)
 
   param_local$train$training <- c(
-    202104, 202103, 202102, 202101, 
+    202105, 202104, 202103, 202102, 202101, 
     202012, 202011, 202010, 202009, 202008, 202007, 
     # 202006  Excluyo por variables rotas
     202005, 202004, 202003, 202002, 202001,
@@ -455,7 +455,7 @@ KA_evaluate_kaggle_semillerio <- function( pinputexps )
 {
   if( -1 == (param_local <- exp_init())$resultado ) return( 0 )# linea fija
 
-  param_local$meta$script <- "/src/wf-etapas/z2602_KA_evaluate_kaggle_SEMI.r"
+  param_local$meta$script <- "/src/wf-etapas/z2603_KA_evaluate_kaggle_SEMI.r"
 
   param_local$semilla <- NULL  # no usa semilla, es deterministico
 
@@ -464,7 +464,7 @@ KA_evaluate_kaggle_semillerio <- function( pinputexps )
   param_local$envios_desde <- 10500L
   param_local$envios_hasta <- 12050L
   param_local$envios_salto <-   500L
-  param_local$competition <- "dm-ey-f-2024-segunda"
+  param_local$competition <- "dm-ey-f-2024-tercera"
 
   return( exp_correr_script( param_local ) ) # linea fija
 }
@@ -481,7 +481,7 @@ wf_SEMI_ago_orden227 <- function( pnombrewf )
   param_local <- exp_wf_init( pnombrewf ) # linea fija
 
   # Etapa especificacion dataset de la Segunda Competencia Kaggle
-  DT_incorporar_dataset( "~/buckets/b1/datasets/competencia_02.csv.gz")
+  DT_incorporar_dataset( "~/buckets/b1/datasets/competencia_03.csv.gz")
 
   CA_catastrophe_base( metodo="MachineLearning")
   FEintra_manual_base()
@@ -490,7 +490,7 @@ wf_SEMI_ago_orden227 <- function( pnombrewf )
   ultimo <- FErf_attributes_base()
   #CN_canaritos_asesinos_base(ratio=0.2, desvio=4.0)
 
-  ts8 <- TS_strategy_base8()
+  ts9 <- TS_strategy_base9()
 
   # la Bayesian Optimization con el semillerio dentro
   ht <- HT_tuning_semillerio(
@@ -500,13 +500,13 @@ wf_SEMI_ago_orden227 <- function( pnombrewf )
 
 
   fm <- FM_final_models_lightgbm_semillerio( 
-    c(ht, ts8), # los inputs
+    c(ht, ts9), # los inputs
     ranks = c(1), # 1 = el mejor de la bayesian optimization
     semillerio = 50,   # cantidad de semillas finales
     repeticiones_exp = 1  # cantidad de repeticiones del semillerio
   )
 
-  SC_scoring_semillerio( c(fm, ts8) )
+  SC_scoring_semillerio( c(fm, ts9) )
   KA_evaluate_kaggle_semillerio()
   
 
