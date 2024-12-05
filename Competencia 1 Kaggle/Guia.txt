@@ -1,1 +1,4 @@
-#
+Guía de pasos para la primera competencia
+1. Cálculo de la clase ternaria con la notebook: DMEyF_KAGGLE_ClaseTernaria.ipynb
+2. Generar features al dataset con la notebook : DMFyE_KAGGLE_Feature_Engineering_en_SQL.ipynb
+3. Generar el modelo con la notebook : DMEyF_KAGGLE_MODELO.ipynb
