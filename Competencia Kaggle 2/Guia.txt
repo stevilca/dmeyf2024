@@ -1,0 +1,8 @@
+Guía de pasos para la segunda competencia
+1. Cálculo de la clase ternaria con la notebook en Phyton: s001.ipynb
+2. Ejecutar el script en R "903_run_workflow"
+Previamente, en el script "918_workflow_base_f202108" se modificó
+Semilla: 191173
+FEhist_base: Tendencia de primer orden, lag1, lag2 y lag3
+
+
