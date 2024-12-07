@@ -1,1 +1,33 @@
+Guía de pasos para la tercera competencia
 
+1. Cálculo de la clase ternaria con la notebook en Phyton: s003.ipynb
+2. Ejecutar el script en R "909_run_orden227"
+Previamente, en el script "990_workflow_orden227_SEMI" se modificó
+Semilla: 191173
+FEhist_base: Se habilitó el uso de tendencias de primer orden y Segundo orden y lag1, lag2 y lag3
+
+FErf_attributes_base: se ajustó en los parámetros de LGBM
+	num_iterations = 25
+
+TS_strategy_base9: se ajustó
+mes futuro igual a 202109
+meses final train igual a 
+    202107, 202106, 202105, 202104, 202103, 202102, 202101, 
+    202012, 202011, 202010, 202009, 202008, 202007, 
+    202005, 202004, 202003, 202002, 202001,
+    201912, 201911,
+    201909, 201908, 201907, 201906,
+    201904, 201903
+
+mes train test igual a 202107
+mes train validation igual a 202106
+meses train training igual a 
+    202105, 202104, 202103, 202102, 202101, 
+    202012, 202011, 202010, 202009, 202008, 202007, 
+    202005, 202004, 202003, 202002, 202001,
+    201912, 201911,
+    201909, 201908, 201907, 201906,
+    201904, 201903
+ 
+HT_tuning_semillerio, se ajustó
+	bo_iteraciones igual a 20 (iteraciones optimizaciones bayesianas)
