@@ -1,6 +1,6 @@
 Guía de pasos para la tercera competencia
 
-1. Cálculo de la clase ternaria con la notebook en Phyton: s002.ipynb
+1. Cálculo de la clase ternaria con la notebook en Phyton: s003.ipynb
 2. Ejecutar el script en R "909_run_orden227"
 Previamente, en el script "990_workflow_orden227_SEMI" se modificó
 Semilla: 191173
